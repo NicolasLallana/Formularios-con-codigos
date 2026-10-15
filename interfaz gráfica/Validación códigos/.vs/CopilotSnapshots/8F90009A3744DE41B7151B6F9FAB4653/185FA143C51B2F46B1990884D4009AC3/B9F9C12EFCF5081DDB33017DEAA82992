@@ -1,0 +1,55 @@
+﻿namespace Validación_códigos
+{
+    public partial class pnlprincipal : Form
+    {
+        public pnlprincipal()
+        {
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            txtcodigo.KeyDown += Txtcodigo_KeyDown;
+        }
+
+        private void Txtcodigo_KeyDown(object? sender, KeyEventArgs e){
+            if (e.KeyCode == Keys.Enter){
+                int nro;
+                if (int.TryParse(txtcodigo.Text, out int nro)) {
+                    int.TryParse(txtcodigo.Text, out nro);
+                    frmcargasaldo f = new frmcargasaldo(nro);
+                    f.Show(this);
+                    txtcodigo.Clear();
+                    /*e.SuppressKeyPress = true; // Evita que se genere un sonido al presionar Enter*/
+                } else { 
+                    MessageBox.Show("Ingrese un código válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtcodigo.Clear();
+                    txtcodigo.Focus();
+                }
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblcodigo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtcodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlprincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itmasociartarjeta_Click(object sender, EventArgs e)
+        {
+            frmcrearcliente f = new frmcrearcliente();
+            f.Show(this);
+        }
+    }
+}
